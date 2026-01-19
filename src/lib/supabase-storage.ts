@@ -1,8 +1,22 @@
 import { getSupabase } from './supabase';
-import { AppState, WorkoutLog, CurrentWeights, UserProfile, BodyWeightEntry } from '@/types';
+import { AppState, WorkoutLog, CurrentWeights, UserProfile, BodyWeightEntry, WorkoutExercises } from '@/types';
 import { DEFAULT_STARTING_WEIGHTS } from './constants';
 
 const supabase = getSupabase();
+
+// Database row types
+interface WorkoutRow {
+  id: string;
+  workout_date: string;
+  workout_type: string;
+  exercises: WorkoutExercises;
+}
+
+interface BodyWeightRow {
+  id: string;
+  recorded_at: string;
+  weight: number;
+}
 
 // ============================================
 // Profile Operations
@@ -39,13 +53,13 @@ export async function getProfile(userId: string): Promise<AppState | null> {
       unit: profile.unit as 'lbs' | 'kg',
     },
     currentWeights: profile.current_weights as CurrentWeights,
-    workoutHistory: (workouts || []).map((w) => ({
+    workoutHistory: (workouts || []).map((w: WorkoutRow) => ({
       id: w.id,
       date: w.workout_date,
       type: w.workout_type as 'A' | 'B',
       exercises: w.exercises,
     })),
-    bodyWeightHistory: (bodyWeightEntries || []).map((e) => ({
+    bodyWeightHistory: (bodyWeightEntries || []).map((e: BodyWeightRow) => ({
       id: e.id,
       date: e.recorded_at,
       weight: Number(e.weight),

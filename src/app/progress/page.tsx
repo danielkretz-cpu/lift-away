@@ -54,7 +54,7 @@ export default function ProgressPage() {
     let workoutVolume = 0;
     Object.entries(workout.exercises).forEach(([name, exercise]) => {
       if (exercise && !EXERCISES[name]?.isBodyweight) {
-        const reps = exercise.sets.reduce((sum, r) => sum + r, 0);
+        const reps = exercise.sets.reduce((sum: number, r: number) => sum + r, 0);
         workoutVolume += exercise.weight * reps;
       }
     });

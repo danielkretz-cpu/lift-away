@@ -115,7 +115,7 @@ export default function HistoryPage() {
                   </div>
 
                   <div className="flex gap-2 flex-wrap">
-                    {log.sets.map((reps, index) => (
+                    {log.sets.map((reps: number, index: number) => (
                       <span
                         key={index}
                         className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold ${

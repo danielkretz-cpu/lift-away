@@ -57,12 +57,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
-      if (theme === 'system') {
+      const currentTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
+      if (currentTheme === 'system' || !currentTheme) {
         applyTheme('system');
       }
     };
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Re-apply when theme changes
@@ -70,6 +72,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (mounted) {
       applyTheme(theme);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme, mounted]);
 
   // Prevent flash of wrong theme

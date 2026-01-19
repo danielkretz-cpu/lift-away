@@ -43,7 +43,7 @@ export default function ExerciseCard({
   };
 
   const completedSets = sets.filter(s => s !== null).length;
-  const totalReps = sets.reduce((sum, s) => sum + (s || 0), 0);
+  const totalReps = sets.reduce((sum: number, s) => sum + (s || 0), 0);
   const allSetsCompleted = completedSets === config.sets;
 
   return (
