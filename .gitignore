@@ -43,3 +43,8 @@ next-env.d.ts
 status.json
 progress.json
 logs/
+
+# AI/Agent session files
+.claude_session_id
+.ralph_session_history
+.response_analysis
