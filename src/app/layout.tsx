@@ -26,7 +26,7 @@ export default function RootLayout({
           style={{
             position: 'fixed',
             right: '2vw',
-            bottom: '2vh',
+            bottom: '8vh', // moved up from 2vh to 8vh
             zIndex: 50,
             background: 'rgba(60,81,27,0.92)',
             border: '2px solid #5E9C3F',
