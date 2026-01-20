@@ -203,6 +203,29 @@ export default function Home() {
     return (
       <main className="min-h-screen pb-20 bg-gray-50 dark:bg-gray-900">
         <div className="p-4 max-w-md mx-auto">
+          {/* Minecraft-inspired Banner */}
+          <div
+            style={{
+              background: 'linear-gradient(90deg, #5E9C3F 0%, #79C05A 100%)',
+              border: '4px solid #3C511B',
+              boxShadow: '0 4px 16px #0008',
+              fontFamily: '"Press Start 2P", "VT323", monospace',
+              color: '#fff',
+              textShadow: '2px 2px 0 #3C511B, 4px 4px 0 #0008',
+              fontSize: '2rem',
+              letterSpacing: '2px',
+              padding: '1.2rem 0',
+              marginBottom: '2rem',
+              borderRadius: '12px',
+              textAlign: 'center',
+              userSelect: 'none',
+            }}
+          >
+            <span role="img" aria-label="grass block" style={{marginRight: 12}}>🟩</span>
+            Vibez by Kretz
+            <span role="img" aria-label="grass block" style={{marginLeft: 12}}>🟩</span>
+          </div>
+          {/* End Minecraft Banner */}
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
             Next Workout
           </h1>
