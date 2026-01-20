@@ -16,38 +16,46 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased min-h-screen bg-background text-foreground">
-        {/* Minecraft-inspired Banner - visible on all pages */}
-        <div
-          style={{
-            background: 'linear-gradient(90deg, #5E9C3F 0%, #79C05A 100%)',
-            border: '4px solid #3C511B',
-            boxShadow: '0 4px 16px #0008',
-            fontFamily: '"Press Start 2P", "VT323", monospace',
-            color: '#fff',
-            textShadow: '2px 2px 0 #3C511B, 4px 4px 0 #0008',
-            fontSize: '2rem',
-            letterSpacing: '2px',
-            padding: '1.2rem 0',
-            marginBottom: '2rem',
-            borderRadius: '12px',
-            textAlign: 'center',
-            userSelect: 'none',
-            marginTop: '1.5rem',
-            maxWidth: 600,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}
-        >
-          <span role="img" aria-label="grass block" style={{marginRight: 12}}>🟩</span>
-          Vibez by Kretz
-          <span role="img" aria-label="grass block" style={{marginLeft: 12}}>🟩</span>
-        </div>
-        {/* End Minecraft Banner */}
         <ThemeProvider>
           <AuthProvider>
             {children}
           </AuthProvider>
         </ThemeProvider>
+        {/* Subtle floating Vibez by Kretz badge */}
+        <div
+          style={{
+            position: 'fixed',
+            right: '2vw',
+            bottom: '2vh',
+            zIndex: 50,
+            background: 'rgba(60,81,27,0.92)',
+            border: '2px solid #5E9C3F',
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px #0006',
+            fontFamily: 'monospace, "Press Start 2P", "VT323"',
+            color: '#fff',
+            fontSize: '0.95rem',
+            padding: '0.35rem 0.8rem 0.35rem 0.6rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4em',
+            opacity: 0.85,
+            transition: 'opacity 0.3s',
+            pointerEvents: 'none',
+            animation: 'vibez-float 3.5s ease-in-out infinite',
+          }}
+        >
+          <span style={{fontSize: '1.1em', filter: 'drop-shadow(0 1px 0 #3C511B)'}}>🟩</span>
+          <span style={{fontWeight: 700, letterSpacing: '1px'}}>Vibez by Kretz</span>
+        </div>
+        <style>{`
+          @keyframes vibez-float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+          }
+        `}</style>
+        {/* End Vibez badge */}
       </body>
     </html>
   );
